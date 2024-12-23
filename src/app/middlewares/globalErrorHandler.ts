@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -17,7 +18,7 @@ export const globalErrorHandler: ErrorRequestHandler = (
   req,
   res,
   next,
-) => {
+): any => {
   let statusCode = 500;
   // dynamic error response object
   const dynamicResponse: {

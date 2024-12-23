@@ -1,8 +1,8 @@
-# SteerAway
+# Portfolio Api
 
-## Car Rental Reservation System
+## Portfolio Api Management
 
-[Live URL](https://steer-away.vercel.app/)
+[Live URL](portfolio-api-lilac.vercel.app)
 
 ### Table of Contents
 
@@ -11,19 +11,17 @@
 - [Technologies Used](#technologies-used)
 - [Usage Guide](#usage-guide)
 - [Usage](#usage)
-- [Credentials](#Credentials)
 - [Contact](#contact)
 
 ## Project Overview
 
-SteerAway is a comprehensive car rental reservation system backend with features for booking and managing car rentals. Users can easily search for available cars, make booking, and admin can manage bookings and returns.
+Portfolio Apis For Managing the Dashboard of the Portfolio.
 
 ## Features
 
-- **User Authentication:** Secure sign-up and login functionality.
-- **Car Search and Filter:** Admin can filter bookings based on carId and date.
-- **Booking Management:** Users can view the cars, book it if available.
-- **Admin:** Manage cars, bookings.
+- **User Authentication:** Secure login functionality.
+- **Create Blogs:** Admin can Create Blogs.
+- **Management:** Admin can manage portfolio information.
 
 ## Technologies Used
 
@@ -45,7 +43,7 @@ Open command prompt(`cmd`) in folder where you want to add the project.
 Run the following command to clone the repository:
 
 ```
-git clone https://github.com/rakibul58/steerAway-batch-3-assignment-3.git
+git clone https://github.com/rakibul58/portfolio-api.git
 ```
 
 ### Step 3
@@ -53,7 +51,7 @@ git clone https://github.com/rakibul58/steerAway-batch-3-assignment-3.git
 Open the cloned folder or run the following in cmd:
 
 ```
-cd steerAway-batch-3-assignment-3
+cd portfolio-api
 ```
 
 ### Step 4
@@ -76,6 +74,7 @@ BCRYPT_SALT_ROUNDS=
 JWT_ACCESS_SECRET=
 JWT_ACCESS_EXPIRES_IN=
 DEFAULT_PASSWORD=
+DEFAULT_USER=
 ```
 
 ### Step 6
@@ -83,7 +82,7 @@ DEFAULT_PASSWORD=
 Run the following code to start the development server:
 
 ```
-npm run start
+npm start
 ```
 
 Other commands can be found in package.json scripts
@@ -91,18 +90,6 @@ Other commands can be found in package.json scripts
 ## Usage
 
 Once the application is set up and running, you can access it at http://localhost:5000 (or the appropriate port if specified differently). From there, you can create an account, log in, and start booking cars.
-
-## Credentials
-
-### Admin Credentials
-
-- **Email:** admin@test.com
-- **Password:** admin123
-
-### User Credentials
-
-- **Email:** user@test.com
-- **Password:** user123
 
 ## Contact
 
