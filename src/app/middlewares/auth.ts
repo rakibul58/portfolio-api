@@ -44,12 +44,9 @@ const auth = (...requiredRoles: TUserRole[]) => {
 
     const { role, user } = decoded;
 
-    if (!(user?.user === config.default_user)) {
+    if (!(user === config.default_user)) {
       throw new AppError(httpStatus.NOT_FOUND, 'Wrong Username!');
     }
-
-    if (!(user?.password === config.default_password))
-      throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
 
     // checking the role is correct
     if (requiredRoles && !requiredRoles.includes(role)) {
