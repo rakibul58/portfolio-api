@@ -3,10 +3,9 @@ import { z } from 'zod';
 // Validation for signIn
 const signinValidationSchema = z.object({
   body: z.object({
-    email: z
-      .string({ required_error: 'Email is required.' })
-      .trim()
-      .email({ message: 'Please enter a valid email' }),
+    user: z
+      .string({ required_error: 'Username is required.' })
+      .trim(),
     password: z.string({ required_error: 'Password is required' }),
   }),
 });

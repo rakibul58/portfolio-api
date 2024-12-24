@@ -10,7 +10,11 @@ const app: Application = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ['*'],
+    origin: [
+      'http://localhost:5173',
+      'https://rakibul-developer-portfolio.vercel.app',
+      "https://developers-dashboard-liart.vercel.app"
+    ],
     credentials: true,
   }),
 );
