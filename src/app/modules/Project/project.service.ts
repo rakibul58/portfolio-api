@@ -4,12 +4,8 @@ import { IProject } from './project.interface';
 import QueryBuilder from '../../builder/QueryBuilder';
 
 const createProjectInDB = async (projectData: Partial<IProject>) => {
-  const { title, ...rest } = projectData;
-  const slug = slugify(title as string, { lower: true });
   const project = await Project.create({
-    ...rest,
-    title,
-    slug,
+    projectData,
   });
   return project;
 };
@@ -31,8 +27,8 @@ const getAllProjectsFromDB = async (query: any) => {
   };
 };
 
-const getProjectBySlugFrom = async (slug: string) => {
-  const project = await Project.findOne({ slug });
+const getProjectBySlugFrom = async (id: string) => {
+  const project = await Project.findById(id);
   return project;
 };
 
@@ -40,14 +36,7 @@ const updateProjectInDB = async (
   id: string,
   projectData: Partial<IProject>,
 ) => {
-  const { title, ...rest } = projectData;
-  const updateData = {
-    ...rest,
-    title,
-    slug: title ? slugify(title as string, { lower: true }) : undefined,
-  };
-
-  const project = await Project.findByIdAndUpdate(id, updateData, {
+  const project = await Project.findByIdAndUpdate(id, projectData, {
     new: true,
     runValidators: true,
   });
