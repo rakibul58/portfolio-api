@@ -1,12 +1,10 @@
-import slugify from 'slugify';
 import { Project } from './project.model';
 import { IProject } from './project.interface';
 import QueryBuilder from '../../builder/QueryBuilder';
 
 const createProjectInDB = async (projectData: Partial<IProject>) => {
-  const project = await Project.create({
-    projectData,
-  });
+  console.log({ projectData });
+  const project = await Project.create(projectData);
   return project;
 };
 
