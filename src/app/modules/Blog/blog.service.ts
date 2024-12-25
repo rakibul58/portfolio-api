@@ -1,6 +1,7 @@
 import slugify from 'slugify';
 import { IBlogSchema } from './blog.interface';
 import { Blog } from './blog.model';
+import QueryBuilder from '../../builder/QueryBuilder';
 
 const createBlogInDB = async (blogData: IBlogSchema | Partial<IBlogSchema>) => {
   const { title, content, excerpt, category, tags, coverImage, status } =
@@ -22,23 +23,19 @@ const createBlogInDB = async (blogData: IBlogSchema | Partial<IBlogSchema>) => {
 };
 
 const getAllBlogsFromDB = async (query: any) => {
-  const { page = 1, limit = 3, category, status } = query;
-  const searchQuery: { category?: string; status?: string } = {};
+  const BlogQuery = new QueryBuilder(Blog.find(), query)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
 
-  if (category) searchQuery.category = category;
-  if (status) searchQuery.status = status;
-
-  const blogs = await Blog.find(searchQuery)
-    .sort({ createdAt: -1 })
-    .limit(limit * 1)
-    .skip((page - 1) * limit);
-
-  const count = await Blog.countDocuments(searchQuery);
+  const result = await BlogQuery.modelQuery;
+  const meta = await BlogQuery.countTotal();
 
   return {
-    blogs,
-    totalPages: Math.ceil(count / limit),
-    currentPage: page,
+    blogs: result,
+    totalPages: meta.totalPage,
+    currentPage: meta.page,
   };
 };
 
